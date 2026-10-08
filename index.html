@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Técnica y Bioquímica - Conservación de Germoplasma y MIP</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f9f4;
+            color: #1a3c1a;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #1e5e2e, #2e7d32, #1e5e2e);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 8px solid #f9a825;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "🌱";
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            top: -40px;
+            left: 20px;
+        }
+
+        header::after {
+            content: "🧬";
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            top: -40px;
+            right: 20px;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 1.9rem;
+            text-shadow: 2px 2px 4px #0a1f0a;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== RESUMEN ===== */
+        .resumen {
+            background: linear-gradient(135deg, #fff9c4, #fff59d);
+            border-left: 8px solid #f9a825;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 4px 15px rgba(249, 168, 37, 0.2);
+        }
+
+        .resumen h2 {
+            color: #b71c1c;
+            margin-top: 0;
+            border-bottom: 2px dashed #b71c1c;
+            padding-bottom: 5px;
+        }
+
+        /* ===== BLOQUES ===== */
+        .bloque {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-top: 8px solid #2e7d32;
+        }
+
+        .bloque h2 {
+            color: #1e5e2e;
+            border-bottom: 3px solid #f9a825;
+            padding-bottom: 12px;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .bloque h3 {
+            color: #b71c1c;
+            margin-top: 30px;
+            border-left: 6px solid #f9a825;
+            padding-left: 12px;
+        }
+
+        .bloque h4 {
+            color: #1e5e2e;
+            margin-bottom: 5px;
+        }
+
+        ul { padding-left: 22px; }
+        li { margin-bottom: 8px; }
+
+        /* ===== TABLAS ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2e7d32, #1e5e2e);
+            color: white;
+            padding: 14px 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) { background-color: #f1f8e9; }
+        tr:hover { background-color: #fff9c4; transition: 0.3s; }
+
+        /* ===== DESTACADOS ===== */
+        .destacado-verde {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-left: 6px solid #2e7d32;
+            padding: 15px 18px;
+            margin: 12px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .destacado-amarillo {
+            background: linear-gradient(135deg, #fff9c4, #fff59d);
+            border-left: 6px solid #f9a825;
+            padding: 15px 18px;
+            margin: 12px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .destacado-rojo {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            border-left: 6px solid #b71c1c;
+            padding: 15px 18px;
+            margin: 12px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* ===== ESQUEMAS / DIAGRAMAS ===== */
+        .esquema {
+            background: linear-gradient(135deg, #f1f8e9, #e8f5e9);
+            border: 3px dashed #2e7d32;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 15px;
+        }
+
+        .esquema h4 {
+            color: #b71c1c;
+            margin-top: 0;
+            text-align: center;
+            border-bottom: 2px solid #f9a825;
+            padding-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .diagrama-contenedor {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            overflow-x: auto;
+            box-shadow: inset 0 0 20px rgba(46, 125, 50, 0.05);
+        }
+
+        .diagrama-contenedor svg {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .pie-imagen {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #555;
+            font-style: italic;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+
+        /* ===== INTEGRANTES ===== */
+        .integrantes {
+            background: linear-gradient(135deg, #1e5e2e, #2e7d32);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 4px solid #f9a825;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .integrantes p { margin: 6px 0; font-size: 1.1rem; }
+        .integrantes .titulo { font-size: 1.3rem; font-weight: bold; color: #f9a825; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.2rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 6px 4px; }
+            .bloque { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🧬 GUÍA TÉCNICA Y BIOQUÍMICA 🧬</h1>
+    <h1 style="font-size:1.4rem;">PARA LA CONSERVACIÓN DE GERMOPLASMA Y MANEJO INTEGRADO DE PLAGAS</h1>
+    <p>🌾 Manual de Apoyo Técnico para Banco Comunal de Germoplasma y Productores Agrícolas Locales 🌾</p>
+</header>
+
+<div class="container">
+
+    <!-- ===== RESUMEN EJECUTIVO ===== -->
+    <section class="resumen">
+        <h2>📋 Resumen Ejecutivo</h2>
+        <p>La seguridad alimentaria y la preservación de la biodiversidad agrícola dependen directamente de la correcta conservación del material genético vegetal (germoplasma) y de la implementación de estrategias sostenibles para la protección de cultivos. La presente guía técnica ofrece una fundamentación científica rigurosa y aplicable sobre fisiología seminal, bioquímica de plaguicidas y formulación de alternativas biológicas ecológicas.</p>
+    </section>
+
+    <!-- ===== BLOQUE 1 ===== -->
+    <section class="bloque">
+        <h2>🌱 BLOQUE 1: Cripta de la Vida (Conservación de Germoplasma y Semillas)</h2>
+
+        <h3>1.1 Procesos Bioquímicos Celulares durante la Latencia y Pérdida de Viabilidad</h3>
+
+        <div class="destacado-verde">
+            <h4>💤 Latencia Seminal</h4>
+            <p>La latencia es un estado de dormancia metabólica reprogramada que inhibe la germinación anticipada. A nivel celular, se produce una acumulación fisiológica del ácido abscísico (ABA), fitohormona que reprime la transcripción genética responsable del crecimiento embrionario y estimula la síntesis de proteínas LEA (Late Embryogenesis Abundant), las cuales protegen las estructuras macromoleculares de las células embrionarias frente a la deshidratación.</p>
+        </div>
+
+        <h4>⚠️ Factores Bioquímicos Causantes de la Pérdida de Viabilidad:</h4>
+        <ul>
+            <li><strong>💧 Actividad del Agua Libre y Humedad:</strong> Un contenido elevado de humedad libre facilita la movilidad iónica y la reactivación enzimática no coordinada, degradando aceleradamente las estructuras celulares.</li>
+            <li><strong>🧪 Degradación Lipídica y Peroxidación:</strong> Los ácidos grasos insaturados de las membranas celulares sufren peroxidación lipídica inducida por especies reactivas de oxígeno (ROS), dañando irreversiblemente la integridad de la bicapa fosfolipídica y perdiendo la selectividad de permeabilidad.</li>
+            <li><strong>⚗️ Actividad Enzimática Irregular:</strong> La humedad inadecuada activa lipasas, proteasas y alfa-amilasas fuera del proceso germinativo, consumiendo las reservas nutricionales del endospermo antes de la siembra.</li>
+            <li><strong>🔥 Respiración Celular Acelerada:</strong> Altas temperaturas estimulan el metabolismo respiratorio, agotando las reservas de ATP, glucosa y generando micro-ambientes calóricos dentro de los recipientes de almacenamiento.</li>
+        </ul>
+
+        <!-- ESQUEMA 1 -->
+        <div class="esquema">
+            <h4>🧬 ESQUEMA TÉCNICO 1: Bioquímica Celular en la Latencia vs. Pérdida de Viabilidad</h4>
+            <div class="diagrama-contenedor">
+                <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="gradVerde" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#66bb6a;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#2e7d32;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gradRojo" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ef5350;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#b71c1c;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gradAmarillo" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ffd54f;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f9a825;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Fondo -->
+                    <rect x="0" y="0" width="900" height="520" fill="#f9fbe7" rx="15"/>
+                    
+                    <!-- Título -->
+                    <text x="450" y="35" font-family="Arial" font-size="18" font-weight="bold" fill="#1b5e20" text-anchor="middle">🌱 LATENCIA vs ⚠️ DEGRADACIÓN 🌱</text>
+
+                    <!-- ===== COLUMNA IZQUIERDA: LATENCIA ===== -->
+                    <rect x="30" y="60" width="400" height="440" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3" rx="12"/>
+                    <rect x="30" y="60" width="400" height="50" fill="url(#gradVerde)" rx="12"/>
+                    <text x="230" y="92" font-family="Arial" font-size="17" font-weight="bold" fill="white" text-anchor="middle">💤 ESTADO DE LATENCIA</text>
+
+                    <!-- Semilla durmiente -->
+                    <ellipse cx="230" cy="160" rx="45" ry="30" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2"/>
+                    <text x="230" y="165" font-size="22" text-anchor="middle">💤</text>
+                    <text x="230" y="205" font-family="Arial" font-size="11" fill="#1b5e20" text-anchor="middle" font-style="italic">Semilla en dormancia</text>
+
+                    <!-- ABA -->
+                    <rect x="70" y="220" width="140" height="55" fill="url(#gradVerde)" rx="8"/>
+                    <text x="140" y="245" font-family="Arial" font-size="12" font-weight="bold" fill="white" text-anchor="middle">ABA ALTO</text>
+                    <text x="140" y="262" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Ácido Abscísico</text>
+
+                    <!-- Proteínas LEA -->
+                    <rect x="250" y="220" width="140" height="55" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="8"/>
+                    <text x="320" y="245" font-family="Arial" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">Proteínas LEA</text>
+                    <text x="320" y="262" font-family="Arial" font-size="10" fill="#1b5e20" text-anchor="middle">Protectoras</text>
+
+                    <!-- Flecha -->
+                    <text x="230" y="305" font-size="24" fill="#2e7d32" text-anchor="middle">▼</text>
+
+                    <!-- Membrana estable -->
+                    <rect x="90" y="325" width="280" height="50" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="8"/>
+                    <text x="230" y="347" font-family="Arial" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">Membrana estabilizada ✅</text>
+                    <text x="230" y="365" font-family="Arial" font-size="10" fill="#1b5e20" text-anchor="middle">Bicapa fosfolipídica íntegra</text>
+
+                    <!-- Respiración -->
+                    <rect x="90" y="395" width="280" height="55" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2" rx="8"/>
+                    <text x="230" y="420" font-family="Arial" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">🌬️ Respiración mínima</text>
+                    <text x="230" y="438" font-family="Arial" font-size="11" fill="#1b5e20" text-anchor="middle">&lt; 1% — Metabolismo pausado</text>
+
+                    <!-- ===== COLUMNA DERECHA: DEGRADACIÓN ===== -->
+                    <rect x="470" y="60" width="400" height="440" fill="#ffebee" stroke="#b71c1c" stroke-width="3" rx="12"/>
+                    <rect x="470" y="60" width="400" height="50" fill="url(#gradRojo)" rx="12"/>
+                    <text x="670" y="92" font-family="Arial" font-size="17" font-weight="bold" fill="white" text-anchor="middle">⚠️ DEGRADACIÓN</text>
+
+                    <!-- Semilla dañada -->
+                    <ellipse cx="670" cy="160" rx="45" ry="30" fill="#ef9a9a" stroke="#b71c1c" stroke-width="2"/>
+                    <text x="670" y="165" font-size="22" text-anchor="middle">💀</text>
+                    <text x="670" y="205" font-family="Arial" font-size="11" fill="#7f0000" text-anchor="middle" font-style="italic">Semilla en deterioro</text>
+
+                    <!-- Humedad -->
+                    <rect x="510" y="220" width="140" height="55" fill="url(#gradRojo)" rx="8"/>
+                    <text x="580" y="245" font-family="Arial" font-size="12" font-weight="bold" fill="white" text-anchor="middle">💧 Humedad alta</text>
+                    <text x="580" y="262" font-family="Arial" font-size="10" fill="white" text-anchor="middle">+ Temperatura alta</text>
+
+                    <!-- ROS -->
+                    <rect x="690" y="220" width="140" height="55" fill="#ffcdd2" stroke="#b71c1c" stroke-width="2" rx="8"/>
+                    <text x="760" y="245" font-family="Arial" font-size="12" font-weight="bold" fill="#7f0000" text-anchor="middle">⚡ ROS</text>
+                    <text x="760" y="262" font-family="Arial" font-size="10" fill="#7f0000" text-anchor="middle">Especies Reactivas O₂</text>
+
+                    <!-- Flecha -->
+                    <text x="670" y="305" font-size="24" fill="#b71c1c" text-anchor="middle">▼</text>
+
+                    <!-- Peroxidación -->
+                    <rect x="530" y="325" width="280" height="50" fill="#ffcdd2" stroke="#b71c1c" stroke-width="2" rx="8"/>
+                    <text x="670" y="347" font-family="Arial" font-size="12" font-weight="bold" fill="#7f0000" text-anchor="middle">🔥 Peroxidación lipídica</text>
+                    <text x="670" y="365" font-family="Arial" font-size="10" fill="#7f0000" text-anchor="middle">Membrana dañada irreversiblemente</text>
+
+                    <!-- Muerte -->
+                    <rect x="530" y="395" width="280" height="55" fill="url(#gradRojo)" rx="8"/>
+                    <text x="670" y="420" font-family="Arial" font-size="13" font-weight="bold" fill="white" text-anchor="middle">☠️ MUERTE CELULAR</text>
+                    <text x="670" y="438" font-family="Arial" font-size="11" fill="white" text-anchor="middle">Pérdida total de viabilidad</text>
+                </svg>
+                <p class="pie-imagen">Figura 1: Comparación bioquímica entre el estado de latencia (conservación óptima) y el proceso de degradación celular.</p>
+            </div>
+        </div>
+
+        <h3>1.2 Protocolo de Condiciones Ideales de Almacenamiento</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Categoría de Almacenamiento</th>
+                    <th>Temperatura (°C)</th>
+                    <th>Humedad Relativa (HR)</th>
+                    <th>Tipo de Contenedor Hermético</th>
+                    <th>Horizonte de Conservación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Corto Plazo</td>
+                    <td>15 °C a 20 °C</td>
+                    <td>40% - 50% HR</td>
+                    <td>Bolsas de papel Kraft multicapa tratadas o contenedores de plástico PET con cierre hermético.</td>
+                    <td>1 a 2 ciclos agrícolas (&lt; 12 meses)</td>
+                </tr>
+                <tr>
+                    <td>Mediano Plazo</td>
+                    <td>0 °C a 5 °C</td>
+                    <td>30% - 40% HR</td>
+                    <td>Frascos de vidrio de borosilicato de boca ancha con empaque de silicona y gel de sílice (desecante).</td>
+                    <td>3 a 10 años</td>
+                </tr>
+                <tr>
+                    <td>Largo Plazo (Cripta de Germoplasma)</td>
+                    <td>-18 °C a -20 °C</td>
+                    <td>15% - 20% HR (Humedad interna seminal: 3-7%)</td>
+                    <td>Sobres trilaminados de papel de aluminio y polietileno (Mylar) sellados térmicamente</td>
+                    <td>15 a 50+ años</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ESQUEMA 2 -->
+        <div class="esquema">
+            <h4>🏺 ESQUEMA TÉCNICO 2: Barreras Fisicoquímicas en Contenedores de Germoplasma</h4>
+            <div class="diagrama-contenedor">
+                <svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="vidrio" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#b3e5fc;stop-opacity:0.6" />
+                            <stop offset="100%" style="stop-color:#4fc3f7;stop-opacity:0.8" />
+                        </linearGradient>
+                        <linearGradient id="mylar" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#cfd8dc" />
+                            <stop offset="50%" style="stop-color:#90a4ae" />
+                            <stop offset="100%" style="stop-color:#cfd8dc" />
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="0" y="0" width="900" height="480" fill="#f9fbe7" rx="15"/>
+                    <text x="450" y="35" font-family="Arial" font-size="18" font-weight="bold" fill="#1b5e20" text-anchor="middle">🛡️ BARRERAS FISICOQUÍMICAS DE CONTENEDORES 🛡️</text>
+
+                    <!-- ===== FRASCO DE VIDRIO ===== -->
+                    <rect x="40" y="70" width="390" height="390" fill="#fff9c4" stroke="#f9a825" stroke-width="3" rx="12"/>
+                    <rect x="40" y="70" width="390" height="50" fill="#f9a825" rx="12"/>
+                    <text x="235" y="102" font-family="Arial" font-size="15" font-weight="bold" fill="#5d4037" text-anchor="middle">🥃 FRASCO DE VIDRIO BOROSILICATO</text>
+
+                    <!-- Dibujo del frasco -->
+                    <path d="M 160 180 L 160 250 Q 160 340 235 340 Q 310 340 310 250 L 310 180 Z" fill="url(#vidrio)" stroke="#0277bd" stroke-width="3"/>
+                    <rect x="150" y="170" width="170" height="20" fill="#90a4ae" stroke="#455a64" stroke-width="2" rx="3"/>
+                    <text x="235" y="185" font-family="Arial" font-size="10" fill="#263238" text-anchor="middle">Tapa hermética</text>
+                    
+                    <!-- Semillas dentro -->
+                    <circle cx="200" cy="290" r="8" fill="#8d6e63"/>
+                    <circle cx="235" cy="300" r="8" fill="#8d6e63"/>
+                    <circle cx="270" cy="290" r="8" fill="#8d6e63"/>
+                    <circle cx="215" cy="315" r="8" fill="#8d6e63"/>
+                    <circle cx="255" cy="315" r="8" fill="#8d6e63"/>
+                    
+                    <!-- Gel de sílice -->
+                    <circle cx="220" cy="240" r="6" fill="#42a5f5"/>
+                    <circle cx="240" cy="235" r="6" fill="#42a5f5"/>
+                    <circle cx="255" cy="245" r="6" fill="#42a5f5"/>
+                    <text x="235" y="265" font-family="Arial" font-size="10" fill="#01579b" text-anchor="middle">Gel de sílice</text>
+
+                    <!-- Anotaciones -->
+                    <text x="235" y="380" font-family="Arial" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">🧪 Junta de silicona + Gel de sílice</text>
+                    <text x="235" y="405" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Absorbe agua libre</text>
+                    <text x="235" y="430" font-family="Arial" font-size="12" font-weight="bold" fill="#0277bd" text-anchor="middle">→ Ambiente anóxico e inerte</text>
+                    <text x="235" y="450" font-family="Arial" font-size="11" font-style="italic" fill="#555" text-anchor="middle">Conservación: 3 a 10 años</text>
+
+                    <!-- ===== SOBRE MYLAR ===== -->
+                    <rect x="470" y="70" width="390" height="390" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3" rx="12"/>
+                    <rect x="470" y="70" width="390" height="50" fill="#2e7d32" rx="12"/>
+                    <text x="665" y="102" font-family="Arial" font-size="15" font-weight="bold" fill="white" text-anchor="middle">📦 SOBRE TRILAMINADO MYLAR</text>
+
+                    <!-- Capas -->
+                    <rect x="510" y="150" width="310" height="45" fill="#bbdefb" stroke="#1565c0" stroke-width="2" rx="6"/>
+                    <text x="665" y="178" font-family="Arial" font-size="12" font-weight="bold" fill="#0d47a1" text-anchor="middle">Capa externa: PET</text>
+
+                    <rect x="510" y="205" width="310" height="45" fill="url(#mylar)" stroke="#455a64" stroke-width="2" rx="6"/>
+                    <text x="665" y="233" font-family="Arial" font-size="12" font-weight="bold" fill="#263238" text-anchor="middle">Capa intermedia: Aluminio 9 µm</text>
+
+                    <rect x="510" y="260" width="310" height="45" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="6"/>
+                    <text x="665" y="288" font-family="Arial" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">Capa interna: Polietileno</text>
+
+                    <!-- Sellado -->
+                    <text x="665" y="330" font-family="Arial" font-size="13" font-weight="bold" fill="#2e7d32" text-anchor="middle">🔥 Sellado térmico</text>
+                    
+                    <!-- Anotaciones -->
+                    <text x="665" y="365" font-family="Arial" font-size="12" font-weight="bold" fill="#1b5e20" text-anchor="middle">🛡️ Cero permeabilidad a gases y UV</text>
+                    <text x="665" y="395" font-family="Arial" font-size="11" fill="#555" text-anchor="middle">Triple barrera protectora</text>
+                    <text x="665" y="425" font-family="Arial" font-size="12" font-weight="bold" fill="#2e7d32" text-anchor="middle">→ Conservación a largo plazo</text>
+                    <text x="665" y="448" font-family="Arial" font-size="11" font-style="italic" fill="#555" text-anchor="middle">15 a 50+ años</text>
+                </svg>
+                <p class="pie-imagen">Figura 2: Barreras fisicoquímicas del frasco de borosilicato y del sobre trilaminado Mylar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOQUE 2 ===== -->
+    <section class="bloque">
+        <h2>⚔️ BLOQUE 2: Escudo Bioquímico (Manejo Integrado de Plagas)</h2>
+
+        <h3>2.1 Diferenciación Conceptual y Química de Insumos Agrícolas</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Criterio de Análisis</th>
+                    <th>1. Desinfectantes de Semillas y Sustratos</th>
+                    <th>2. Repelentes de Plagas</th>
+                    <th>3. Plaguicidas Sintéticos vs. Bio-Plaguicidas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Modo de Acción</strong></td>
+                    <td>Eliminación o desactivación directa de fitopatógenos (hongos, bacterias, esporas) presentes en la cutícula externa de la semilla o en el sustrato.</td>
+                    <td>Alteración de los quimiorreceptores gustativos y olfativos del insecto mediante volátiles de alta evicción, impidiendo la alimentación y la puesta de huevos.</td>
+                    <td>Sintéticos: Parálisis inmediata por intoxicación severa. Bioplaguicidas: Disruptores endocrinos, antialimentarios y patógenos específicos.</td>
+                </tr>
+                <tr>
+                    <td><strong>Composición Química</strong></td>
+                    <td>Sintética: Hipoclorito de Sodio (NaClO), Tiram, Captan. Orgánica: Sales de cobre, Extracto de Ajo (Alicina) y cepas biológicas (Trichoderma spp.).</td>
+                    <td>Metabolitos secundarios vegetales hidrocarbonados: Monoterpenos, Sesquiterpenos, Capsaicinoides, Eugenol y Citral.</td>
+                    <td>Sintéticos: Organofosforados (Clorpirifos), Carbamatos (Metomilo). Bio-Plaguicidas: Limonoides (Azadiractina), Espinosinas y proteína endotoxina de Bacillus thuringiensis.</td>
+                </tr>
+                <tr>
+                    <td><strong>Método de Aplicación</strong></td>
+                    <td>Inmersión preventiva de la semilla</td>
+                    <td>Aspersión foliar preventiva</td>
+                    <td>Aspersión foliar por micro-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.2 Impacto Bioquímico Fisiológico y Ambiental</h3>
+
+        <div class="destacado-rojo">
+            <h4>☠️ Mecanismo Fisiológico de un Plaguicida Sintético (Organofosforados y Carbamatos)</h4>
+            <ul>
+                <li><strong>Inhibición Enzimática:</strong> Los organofosforados se unen covalentemente al sitio activo de la enzima Acetilcolinesterasa (AChE), imposibilitando la hidrólisis del neurotransmisor Acetilcolina (ACh) en las uniones sinápticas.</li>
+                <li><strong>Consecuencia Fisiológica:</strong> La acumulación continua de acetilcolina mantiene abiertos los canales iónicos del receptor nicotínico, produciendo una estimulación nerviosa ininterrumpida que deriva en convulsiones, tetania muscular, parálisis y muerte de la plaga.</li>
+                <li><strong>Impacto Ambiental:</strong> Carece de selectividad biológica, afectando de manera crítica a polinizadores como Apis mellifera, peces y fauna silvestre, además de bioacumularse en suelos y acuíferos.</li>
+            </ul>
+        </div>
+
+        <div class="destacado-verde">
+            <h4>🌿 Mecanismo Fisiológico de una Alternativa Orgánica (Aceite de Neem / Azadiractina)</h4>
+            <ul>
+                <li><strong>Interrupción Endocrina y Antialimentaria:</strong> La azadiractina actúa como antagonista estructural de la hormona ecdisona (responsable de la metamorfosis y muda de los artrópodos).</li>
+                <li><strong>Consecuencia Fisiológica:</strong> Impide la cedisis (cambio de exoesqueleto) en estadios larvales, desorienta el comportamiento reproductivo y bloquea los receptores del gusto, provocando que la plaga cese de alimentarse sin generar resistencia genética inmediata.</li>
+                <li><strong>Impacto Ambiental:</strong> Biodegradable bajo la luz solar UV en pocos días, no tóxico para vertebrados y respetuoso con polinizadores e insectos depredadores benéficos.</li>
+            </ul>
+        </div>
+
+        <!-- ESQUEMA 3 -->
+        <div class="esquema">
+            <h4>🧠 ESQUEMA TÉCNICO 3: Comparativa de Vías Neuro-Endocrinas en Insectos</h4>
+            <div class="diagrama-contenedor">
+                <svg viewBox="0 0 950 620" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="neuronaRoja" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ef9a9a" />
+                            <stop offset="100%" style="stop-color:#c62828" />
+                        </linearGradient>
+                        <linearGradient id="neuronaVerde" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#a5d6a7" />
+                            <stop offset="100%" style="stop-color:#2e7d32" />
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="0" y="0" width="950" height="620" fill="#f9fbe7" rx="15"/>
+                    <text x="475" y="35" font-family="Arial" font-size="18" font-weight="bold" fill="#1b5e20" text-anchor="middle">🧪 VÍAS NEURO-ENDOCRINAS EN INSECTOS: COMPARATIVA 🧪</text>
+
+                    <!-- ===== PANEL IZQUIERDO: ORGANOFOSFORADO ===== -->
+                    <rect x="25" y="60" width="440" height="540" fill="#ffebee" stroke="#b71c1c" stroke-width="3" rx="12"/>
+                    <rect x="25" y="60" width="440" height="55" fill="#b71c1c" rx="12"/>
+                    <text x="245" y="95" font-family="Arial" font-size="15" font-weight="bold" fill="white" text-anchor="middle">☠️ A) ORGANOFOSFORADO (Sintético)</text>
+
+                    <!-- Neurona presináptica -->
+                    <circle cx="110" cy="200" r="50" fill="url(#neuronaRoja)" stroke="#7f0000" stroke-width="3"/>
+                    <text x="110" y="195" font-family="Arial" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Neurona</text>
+                    <text x="110" y="210" font-family="Arial" font-size="11" font-weight="bold" fill="white" text-anchor="middle">presináptica</text>
+
+                    <!-- Vesículas con ACh -->
+                    <circle cx="155" cy="175" r="10" fill="#ffcdd2" stroke="#7f0000" stroke-width="1.5"/>
+                    <text x="155" y="179" font-size="8" fill="#7f0000" text-anchor="middle">ACh</text>
+                    <circle cx="175" cy="195" r="10" fill="#ffcdd2" stroke="#7f0000" stroke-width="1.5"/>
+                    <text x="175" y="199" font-size="8" fill="#7f0000" text-anchor="middle">ACh</text>
+                    <circle cx="155" cy="215" r="10" fill="#ffcdd2" stroke="#7f0000" stroke-width="1.5"/>
+                    <text x="155" y="219" font-size="8" fill="#7f0000" text-anchor="middle">ACh</text>
+
+                    <!-- Hendidura sináptica -->
+                    <rect x="200" y="160" width="40" height="80" fill="#fff9c4" stroke="#f9a825" stroke-width="2" rx="5"/>
+                    <text x="220" y="205" font-family="Arial" font-size="10" fill="#5d4037" text-anchor="middle">Hendidura</text>
+                    <text x="220" y="220" font-family="Arial" font-size="10" fill="#5d4037" text-anchor="middle">sináptica</text>
+
+                    <!-- Molécula de organofosforado -->
+                    <rect x="250" y="155" width="50" height="25" fill="#7f0000" rx="5"/>
+                    <text x="275" y="172" font-family="Arial" font-size="9" font-weight="bold" fill="white" text-anchor="middle">OP</text>
+                    
+                    <!-- AChE inhibida -->
+                    <rect x="250" y="195" width="50" height="25" fill="#455a64" rx="5"/>
+                    <text x="275" y="212" font-family="Arial" font-size="8" font-weight="bold" fill="white" text-anchor="middle">AChE ✖</text>
+
+                    <!-- Neurona postsináptica -->
+                    <circle cx="380" cy="200" r="50" fill="url(#neuronaRoja)" stroke="#7f0000" stroke-width="3"/>
+                    <text x="380" y="195" font-family="Arial" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Neurona</text>
+                    <text x="380" y="210" font-family="Arial" font-size="11" font-weight="bold" fill="white" text-anchor="middle">postsináptica</text>
+
+                    <!-- Receptores nicotínicos abiertos -->
+                    <rect x="330" y="180" width="10" height="15" fill="#7f0000"/>
+                    <rect x="330" y="205" width="10" height="15" fill="#7f0000"/>
+                    
+                    <!-- ACh acumulada -->
+                    <circle cx="310" cy="175" r="8" fill="#ffcdd2" stroke="#7f0000" stroke-width="1.5"/>
+                    <circle cx="310" cy="225" r="8" fill="#ffcdd2" stroke="#7f0000" stroke-width="1.5"/>
+                    <circle cx="320" cy="200" r="8" fill="#ffcdd2" stroke="#7f0000" stroke-width="1.5"/>
+
+                    <!-- Señal de peligro -->
+                    <text x="245" y="260" font-family="Arial" font-size="14" font-weight="bold" fill="#b71c1c" text-anchor="middle">⚠️ Acumulación de ACh</text>
+                    <text x="245" y="280" font-family="Arial" font-size="11" fill="#7f0000" text-anchor="middle">Estimulación nerviosa ininterrumpida</text>
+
+                    <!-- Consecuencias -->
+                    <rect x="50" y="300" width="390" height="280" fill="#ffcdd2" stroke="#b71c1c" stroke-width="2" rx="10"/>
+                    <text x="245" y="325" font-family="Arial" font-size="13" font-weight="bold" fill="#7f0000" text-anchor="middle">🔴 CONSECUENCIAS FISIOLÓGICAS</text>
+                    
+                    <text x="245" y="360" font-family="Arial" font-size="12" fill="#7f0000" text-anchor="middle">⚡ Canales iónicos permanentemente abiertos</text>
+                    <text x="245" y="390" font-family="Arial" font-size="12" fill="#7f0000" text-anchor="middle">💥 Convulsiones y tetania muscular</text>
+                    <text x="245" y="420" font-family="Arial" font-size="12" fill="#7f0000" text-anchor="middle">🦴 Parálisis muscular</text>
+                    
+                    <line x1="80" y1="445" x2="410" y2="445" stroke="#b71c1c" stroke-width="2" stroke-dasharray="5,5"/>
+                    
+                    <text x="245" y="475" font-family="Arial" font-size="15" font-weight="bold" fill="#b71c1c" text-anchor="middle">☠️ MUERTE DE LA PLAGA</text>
+                    
+                    <text x="245" y="510" font-family="Arial" font-size="11" fill="#7f0000" text-anchor="middle">🌍 Sin selectividad biológica</text>
+                    <text x="245" y="530" font-family="Arial" font-size="11" fill="#7f0000" text-anchor="middle">🐝 Afecta polinizadores (Apis mellifera)</text>
+                    <text x="245" y="550" font-family="Arial" font-size="11" fill="#7f0000" text-anchor="middle">💧 Bioacumulación en suelos y acuíferos</text>
+
+                    <!-- ===== PANEL DERECHO: AZADIRACTINA ===== -->
+                    <rect x="485" y="60" width="440" height="540" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3" rx="12"/>
+                    <rect x="485" y="60" width="440" height="55" fill="#2e7d32" rx="12"/>
+                    <text x="705" y="95" font-family="Arial" font-size="15" font-weight="bold" fill="white" text-anchor="middle">🌿 B) AZADIRACTINA (Botánico)</text>
+
+                    <!-- Glándula protorácica -->
+                    <ellipse cx="600" cy="180" rx="60" ry="40" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2"/>
+                    <text x="600" y="175" font-family="Arial" font-size="10" font-weight="bold" fill="#1b5e20" text-anchor="middle">Glándula</text>
+                    <text x="600" y="190" font-family="Arial" font-size="10" font-weight="bold" fill="#1b5e20" text-anchor="middle">protorácica</text>
+
+                    <!-- Flecha -->
+                    <text x="680" y="185" font-size="24" fill="#2e7d32" text-anchor="middle">→</text>
+
+                    <!-- Ecdisona -->
+                    <circle cx="740" cy="180" r="35" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2"/>
+                    <text x="740" y="175" font-family="Arial" font-size="10" font-weight="bold" fill="#1b5e20" text-anchor="middle">Ecdisona</text>
+                    <text x="740" y="190" font-family="Arial" font-size="9" fill="#1b5e20" text-anchor="middle">(hormona)</text>
+
+                    <!-- Azadiractina bloqueando -->
+                    <text x="740" y="240" font-size="24" fill="#b71c1c" text-anchor="middle">✖</text>
+                    <text x="740" y="260" font-family="Arial" font-size="11" font-weight="bold" fill="#b71c1c" text-anchor="middle">Azadiractina</text>
+                    <text x="740" y="275" font-family="Arial" font-size="10" fill="#b71c1c" text-anchor="middle">(antagonista)</text>
+
+                    <!-- Recepción bloqueada -->
+                    <rect x="580" y="280" width="200" height="40" fill="#ffcdd2" stroke="#b71c1c" stroke-width="2" rx="8"/>
+                    <text x="680" y="305" font-family="Arial" font-size="12" font-weight="bold" fill="#7f0000" text-anchor="middle">Receptor hormonal bloqueado</text>
+
+                    <!-- Consecuencias -->
+                    <rect x="510" y="340" width="390" height="240" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="10"/>
+                    <text x="705" y="365" font-family="Arial" font-size="13" font-weight="bold" fill="#1b5e20" text-anchor="middle">🟢 CONSECUENCIAS FISIOLÓGICAS</text>
+                    
+                    <text x="705" y="400" font-family="Arial" font-size="12" fill="#1b5e20" text-anchor="middle">🛑 Detención de cedisis (muda)</text>
+                    <text x="705" y="430" font-family="Arial" font-size="12" fill="#1b5e20" text-anchor="middle">🚫 Bloqueo de quimiorreceptores gustativos</text>
+                    <text x="705" y="460" font-family="Arial" font-size="12" fill="#1b5e20" text-anchor="middle">🍽️ Cese de alimentación</text>
+                    
+                    <line x1="540" y1="485" x2="870" y2="485" stroke="#2e7d32" stroke-width="2" stroke-dasharray="5,5"/>
+                    
+                    <text x="705" y="515" font-family="Arial" font-size="15" font-weight="bold" fill="#2e7d32" text-anchor="middle">🌿 MUERTE SIN RESISTENCIA INMEDIATA</text>
+                    
+                    <text x="705" y="545" font-family="Arial" font-size="11" fill="#1b5e20" text-anchor="middle">☀️ Biodegradable bajo luz UV en pocos días</text>
+                    <text x="705" y="565" font-family="Arial" font-size="11" fill="#1b5e20" text-anchor="middle">🐝 Respetuoso con polinizadores benéficos</text>
+                </svg>
+                <p class="pie-imagen">Figura 3: Comparativa de las vías neuro-endocrinas: organofosforado sintético vs. azadiractina botánica.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOQUE 3 ===== -->
+    <section class="bloque">
+        <h2>🌿 BLOQUE 3: Propuesta Práctica Sostenible</h2>
+
+        <h3>3.1 Ficha de Ingredientes y Materiales</h3>
+        <div class="destacado-amarillo">
+            <ul style="margin:0;">
+                <li><strong>🧄 Allium sativum (Ajo):</strong> 100 g de dientes frescos pelados.</li>
+                <li><strong>🌶️ Capsicum annuum (Chile Serrano / Picante):</strong> 50 g de frutos frescos.</li>
+                <li><strong>🥜 Aceite Puro de Neem (Azadirachta indica):</strong> 15 mL.</li>
+                <li><strong>🧼 Jabón Neutro / Potásico Biodegradable:</strong> 5 g (agente tensioactivo / dispersante).</li>
+                <li><strong>💧 Agua Destilada o Desclorada:</strong> 1 Litro.</li>
+            </ul>
+        </div>
+
+        <h3>3.2 Principios Activos y Fundamento Bioquímico</h3>
+        <div class="destacado-verde">
+            <ul style="margin:0;">
+                <li><strong>🧄 Alicina y Ajoeno (Ajo):</strong> Organosulfurados formados por la catálisis de la enzima aliinasa al macerar la alíina. Generan disrupción de las membranas celulares en patógenos fúngicos y emitirán vapores repelentes para insectos plaga.</li>
+                <li><strong>🌶️ Capsaicina (Chile):</strong> Alcaloide vanilloide irritante que sobreestimula los receptores de potencial de membrana (TRPV1) en la plaga, produciendo repulsión inmediata y disuasión alimentaria.</li>
+                <li><strong>🌳 Azadirachtina (Neem):</strong> Limonoide fitoquímico que regula negativamente los niveles de ecdisteroides en el insecto plaga.</li>
+            </ul>
+        </div>
+
+        <h3>3.3 Protocolo Técnico de Preparación y Aplicación</h3>
+        <ol>
+            <li><strong>Extracción Mecánica:</strong> Triturar y licuar los 100 g de ajo y 50 g de chile en 500 mL de agua destilada hasta lograr una suspensión fina y uniforme.</li>
+            <li><strong>Maceración Bioquímica:</strong> Almacenar la mezcla en un frasco de vidrio oscuro sellado herméticamente durante 24 a 48 horas en un lugar fresco y protegido de la luz solar directa para permitir la extracción lipofílica e hidrofílica de los principios activos.</li>
+            <li><strong>Filtración Técnica:</strong> Filtrar la solución utilizando tela de malla fina (manta de cielo o tamiz de 100 micras) para eliminar partículas sólidas que obstruyan las boquillas del aspersor.</li>
+            <li><strong>Emulsificación:</strong> En 500 mL de agua tibia restante, disolver los 5 g de jabón neutro y agregar los 15 mL de aceite de neem. Agitar fuertemente hasta lograr una emulsión líquida homogénea.</li>
+            <li><strong>Mezcla Final y Dosificación:</strong> Integrar el extracto macerado filtrado con la emulsión de neem y jabón. Para su aplicación en campo, diluir 100 mL de la solución concentrada por cada 1 Litro de agua pura.</li>
+            <li><strong>Frecuencia y Modo de Aplicación:</strong> Pulverizar uniformemente sobre el haz y el envés de las hojas al atardecer (evitando la degradación fotolítica de los compuestos sulfurados y limonoides por radiación solar UV). Aplicar preventivamente cada 7 días o cada 4 días ante presencia de infestaciones.</li>
+        </ol>
+
+        <!-- ESQUEMA 4 -->
+        <div class="esquema">
+            <h4>🧑‍🌾 ESQUEMA TÉCNICO 4: Diagrama de Flujo del Proceso de Elaboración</h4>
+            <div class="diagrama-contenedor">
+                <svg viewBox="0 0 950 700" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="stepVerde" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#66bb6a" />
+                            <stop offset="100%" style="stop-color:#2e7d32" />
+                        </linearGradient>
+                        <linearGradient id="stepAmarillo" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ffd54f" />
+                            <stop offset="100%" style="stop-color:#f9a825" />
+                        </linearGradient>
+                        <linearGradient id="stepRojo" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ef5350" />
+                            <stop offset="100%" style="stop-color:#b71c1c" />
+                        </linearGradient>
+                    </defs>
+
+                    <rect x="0" y="0" width="950" height="700" fill="#f9fbe7" rx="15"/>
+                    <text x="475" y="35" font-family="Arial" font-size="18" font-weight="bold" fill="#1b5e20" text-anchor="middle">🌿 PREPARACIÓN DEL BIOPLAGUICIDA ORGÁNICO 🌿</text>
+                    <text x="475" y="58" font-family="Arial" font-size="12" font-style="italic" fill="#555" text-anchor="middle">Guía de formulación casera paso a paso</text>
+
+                    <!-- ===== PASO 1 ===== -->
+                    <rect x="30" y="80" width="200" height="170" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3" rx="12"/>
+                    <rect x="30" y="80" width="200" height="35" fill="url(#stepVerde)" rx="12"/>
+                    <text x="130" y="103" font-family="Arial" font-size="11" font-weight="bold" fill="white" text-anchor="middle">PASO 1</text>
+                    
+                    <!-- Ajo -->
+                    <circle cx="80" cy="150" r="20" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="2"/>
+                    <text x="80" y="155" font-size="16" text-anchor="middle">🧄</text>
+                    <text x="80" y="185" font-family="Arial" font-size="9" fill="#1b5e20" text-anchor="middle">100 g ajo</text>
+                    
+                    <!-- Chile -->
+                    <ellipse cx="160" cy="150" rx="18" ry="12" fill="#ef5350" stroke="#b71c1c" stroke-width="2"/>
+                    <text x="160" y="155" font-size="14" text-anchor="middle">🌶️</text>
+                    <text x="160" y="185" font-family="Arial" font-size="9" fill="#1b5e20" text-anchor="middle">50 g chile</text>
+                    
+                    <text x="130" y="215" font-family="Arial" font-size="10" font-weight="bold" fill="#2e7d32" text-anchor="middle">Recolección</text>
+                    <text x="130" y="232" font-family="Arial" font-size="9" fill="#555" text-anchor="middle">Ingredientes frescos</text>
+
+                    <!-- Flecha 1→2 -->
+                    <text x="250" y="170" font-size="30" fill="#2e7d32" text-anchor="middle">➜</text>
+
+                    <!-- ===== PASO 2 ===== -->
+                    <rect x="270" y="80" width="200" height="170" fill="#fff9c4" stroke="#f9a825" stroke-width="3" rx="12"/>
+                    <rect x="270" y="80" width="200" height="35" fill="url(#stepAmarillo)" rx="12"/>
+                    <text x="370" y="103" font-family="Arial" font-size="11" font-weight="bold" fill="#5d4037" text-anchor="middle">PASO 2</text>
+                    
+                    <!-- Tabla de cortar -->
+                    <rect x="310" y="140" width="120" height="40" fill="#8d6e63" stroke="#5d4037" stroke-width="2" rx="4"/>
+                    <text x="370" y="165" font-family="Arial" font-size="9" fill="white" text-anchor="middle">Tabla de cortar</text>
+                    
+                    <!-- Cuchillo -->
+                    <line x1="330" y1="130" x2="370" y2="150" stroke="#455a64" stroke-width="4"/>
+                    <rect x="360" y="145" width="15" height="6" fill="#795548"/>
+                    
+                    <text x="370" y="215" font-family="Arial" font-size="10" font-weight="bold" fill="#f9a825" text-anchor="middle">Picado fino</text>
+                    <text x="370" y="232" font-family="Arial" font-size="9" fill="#555" text-anchor="middle">Trocear ingredientes</text>
+
+                    <!-- Flecha 2→3 -->
+                    <text x="490" y="170" font-size="30" fill="#2e7d32" text-anchor="middle">➜</text>
+
+                    <!-- ===== PASO 3 ===== -->
+                    <rect x="510" y="80" width="200" height="170" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3" rx="12"/>
+                    <rect x="510" y="80" width="200" height="35" fill="url(#stepVerde)" rx="12"/>
+                    <text x="610" y="103" font-family="Arial" font-size="11" font-weight="bold" fill="white" text-anchor="middle">PASO 3</text>
+                    
+                    <!-- Licuadora -->
+                    <path d="M 570 130 L 650 130 L 640 180 L 580 180 Z" fill="#b0bec5" stroke="#455a64" stroke-width="2"/>
+                    <rect x="585" y="180" width="50" height="15" fill="#78909c"/>
+                    <circle cx="610" cy="155" r="15" fill="#cfd8dc" stroke="#607d8b" stroke-width="1"/>
+                    <text x="610" y="160" font-size="14" text-anchor="middle">🌀</text>
+                    
+                    <text x="610" y="215" font-family="Arial" font-size="10" font-weight="bold" fill="#2e7d32" text-anchor="middle">Licuado</text>
+                    <text x="610" y="232" font-family="Arial" font-size="9" fill="#555" text-anchor="middle">+ 500 mL agua</text>
+
+                    <!-- Flecha 3→4 -->
+                    <text x="730" y="170" font-size="30" fill="#2e7d32" text-anchor="middle">➜</text>
+
+                    <!-- ===== PASO 4 ===== -->
+                    <rect x="750" y="80" width="180" height="170" fill="#fff9c4" stroke="#f9a825" stroke-width="3" rx="12"/>
+                    <rect x="750" y="80" width="180" height="35" fill="url(#stepAmarillo)" rx="12"/>
+                    <text x="840" y="103" font-family="Arial" font-size="11" font-weight="bold" fill="#5d4037" text-anchor="middle">PASO 4</text>
+                    
+                    <!-- Frasco oscuro -->
+                    <rect x="815" y="130" width="50" height="70" fill="#4e342e" stroke="#3e2723" stroke-width="2" rx="5"/>
+                    <rect x="820" y="125" width="40" height="8" fill="#795548"/>
+                    <text x="840" y="170" font-size="14" fill="white" text-anchor="middle">🌑</text>
+                    
+                    <text x="840" y="215" font-family="Arial" font-size="10" font-weight="bold" fill="#f9a825" text-anchor="middle">Maceración</text>
+                    <text x="840" y="232" font-family="Arial" font-size="9" fill="#555" text-anchor="middle">24-48 h oscuridad</text>
+
+                    <!-- Flecha hacia abajo -->
+                    <text x="475" y="285" font-size="30" fill="#2e7d32" text-anchor="middle">⬇</text>
+
+                    <!-- ===== PASO 5 ===== -->
+                    <rect x="30" y="320" width="200" height="170" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3" rx="12"/>
+                    <rect x="30" y="320" width="200" height="35" fill="url(#stepVerde)" rx="12"/>
+                    <text x="130" y="343" font-family="Arial" font-size="11" font-weight="bold" fill="white" text-anchor="middle">PASO 5</text>
+                    
+                    <!-- Colador -->
+                    <path d="M 80 400 L 180 400 L 165 440 L 95 440 Z" fill="#cfd8dc" stroke="#455a64" stroke-width="2"/>
+                    <line x1="80" y1="400" x2="180" y2="400" stroke="#455a64" stroke-width="2"/>
+                    <circle cx="110" cy="415" r="2" fill="#455a64"/>
+                    <circle cx="130" cy="420" r="2" fill="#455a64"/>
+                    <circle cx="150" cy="415" r="2" fill="#455a64"/>
+                    
+                    <text x="130" y="465" font-family="Arial" font-size="10" font-weight="bold" fill="#2e7d32" text-anchor="middle">Filtración</text>
+                    <text x="130" y="482" font-family="Arial" font-size="9" fill="#555" text-anchor="middle">Malla fina / 100 µm</text>
+
+                    <!-- Flecha 5→6 -->
+                    <text x="250" y="410" font-size="30" fill="#2e7d32" text-anchor="middle">➜</text>
+
+                    <!-- ===== PASO 6 ===== -->
+                    <rect x="270" y="320" width="200" height="170" fill="#fff9c4" stroke="#f9a825" stroke-width="3" rx="12"/>
+                    <rect x="270" y="320" width="200" height="35" fill="url(#stepAmarillo)" rx="12"/>
+                    <text x="370" y="343" font-family="Arial" font-size="11" font-weight="bold" fill="#5d4037" text-anchor="middle">PASO 6</text>
+                    
+                    <!-- Frasco con emulsión -->
+                    <rect x="335" y="375" width="70" height="60" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2" rx="5"/>
+                    <rect x="340" y="370" width="60" height="8" fill="#66bb6a"/>
+                    <text x="370" y="410" font-size="16" text-anchor="middle">🥜</text>
+                    
+                    <!-- Ingredientes emulsión -->
+                    <text x="370" y="460" font-family="Arial" font-size="9" fill="#1b5e20" text-anchor="middle">500 mL agua tibia</text>
+                    <text x="370" y="473" font-family="Arial" font-size="9" fill="#1b5e20" text-anchor="middle">+ 5 g jabón + 15 mL neem</text>
+                    <text x="370" y="482" font-family="Arial" font-size="9" font-weight="bold" fill="#2e7d32" text-anchor="middle">Emulsión</text>
+
+                    <!-- Flecha 6→7 -->
+                    <text x="490" y="410" font-size="30" fill="#2e7d32" text-anchor="middle">➜</text>
+
+                    <!-- ===== PASO 7 ===== -->
+                    <rect x="510" y="320" width="200" height="170" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3" rx="12"/>
+                    <rect x="510" y="320" width="200" height="35" fill="url(#stepVerde)" rx="12"/>
+                    <text x="610" y="343" font-family="Arial" font-size="11" font-weight="bold" fill="white" text-anchor="middle">PASO 7</text>
+                    
+                    <!-- Mezcla final -->
+                    <rect x="575" y="375" width="70" height="60" fill="#81c784" stroke="#2e7d32" stroke-width="2" rx="5"/>
+                    <text x="610" y="410" font-size="16" text-anchor="middle">🌿</text>
+                    
+                    <text x="610" y="460" font-family="Arial" font-size="10" font-weight="bold" fill="#2e7d32" text-anchor="middle">Mezcla final</text>
+                    <text x="610" y="478" font-family="Arial" font-size="9" fill="#555" text-anchor="middle">Extracto + emulsión</text>
+
+                    <!-- Flecha 7→8 -->
+                    <text x="730" y="410" font-size="30" fill="#b71c1c" text-anchor="middle">➜</text>
+
+                    <!-- ===== PASO 8 ===== -->
+                    <rect x="750" y="320" width="180" height="170" fill="#ffebee" stroke="#b71c1c" stroke-width="3" rx="12"/>
+                    <rect x="750" y="320" width="180" height="35" fill="url(#stepRojo)" rx="12"/>
+                    <text x="840" y="343" font-family="Arial" font-size="11" font-weight="bold" fill="white" text-anchor="middle">APLICACIÓN</text>
+                    
+                    <!-- Aspersor -->
+                    <rect x="815" y="380" width="50" height="45" fill="#ff8a65" stroke="#bf360c" stroke-width="2" rx="4"/>
+                    <rect x="835" y="370" width="10" height="15" fill="#bf360c"/>
+                    <text x="840" y="408" font-size="14" text-anchor="middle">💦</text>
+                    
+                    <!-- Sol -->
+                    <circle cx="800" cy="380" r="12" fill="#ffd54f"/>
+                    <text x="800" y="385" font-size="10" text-anchor="middle">🌅</text>
+                    
+                    <text x="840" y="460" font-family="Arial" font-size="10" font-weight="bold" fill="#b71c1c" text-anchor="middle">Al atardecer</text>
+                    <text x="840" y="478" font-family="Arial" font-size="9" fill="#555" text-anchor="middle">Diluir 100 mL / 1 L</text>
+
+                    <!-- ===== NOTAS AL PIE ===== -->
+                    <rect x="30" y="520" width="900" height="150" fill="#f1f8e9" stroke="#2e7d32" stroke-width="2" rx="10" stroke-dasharray="8,4"/>
+                    <text x="475" y="550" font-family="Arial" font-size="14" font-weight="bold" fill="#1b5e20" text-anchor="middle">📝 NOTAS TÉCNICAS CLAVE</text>
+                    
+                    <text x="60" y="585" font-family="Arial" font-size="11" fill="#1b5e20">⏰ Aplicar preventivamente cada 7 días, o cada 4 días ante presencia de infestaciones.</text>
+                    <text x="60" y="610" font-family="Arial" font-size="11" fill="#1b5e20">🌙 Pulverizar al atardecer para evitar la degradación fotolítica por radiación UV.</text>
+                    <text x="60" y="635" font-family="Arial" font-size="11" fill="#1b5e20">🌿 Cubrir uniformemente el haz y el envés de las hojas.</text>
+                    <text x="60" y="660" font-family="Arial" font-size="11" fill="#1b5e20">🧴 Almacenar el concentrado en frasco oscuro, en lugar fresco y protegido de la luz.</text>
+                </svg>
+                <p class="pie-imagen">Figura 4: Diagrama de flujo creativo del proceso completo de elaboración del bioplaguicida orgánico.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INTEGRANTES ===== -->
+    <div class="integrantes">
+        <p class="titulo">👨‍🎓 INTEGRANTES 👨‍🎓</p>
+        <p>ELMER GIANCARLO PONCE CARPAÑO, N°21</p>
+        <p>JONATHAN ALEXANDER RODRIGUEZ JACO, N°31</p>
+    </div>
+
+</div>
+
+</body>
+</html>
